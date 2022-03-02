@@ -9,7 +9,7 @@ body {
   background-repeat: repeat;
   /* background-size: 50%, 1800px; */
   animation-name: backgroundslide;
-  animation-duration: 20s;
+  animation-duration: 60s;
   animation-iteration-count: infinite;
   background-position-x: 1494px;
   background-position-y: 1490px;

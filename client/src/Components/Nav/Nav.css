@@ -1,0 +1,143 @@
+.nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: black;
+    justify-content: center;
+    
+    position: relative;
+    /* justify-content: space-around; */
+    align-items: center;
+    width: 100%;
+    /* height: 55px; */
+    /* transform: translateX(-50%); */
+    top:-50px;
+    /* flex-wrap: wrap; */
+    
+    
+
+}
+.nav-container{
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    background-color: yellow;
+    
+
+    
+}
+.navlink{
+    text-decoration: none;
+    /* font-family: Garamond ; */
+    background-color: black;
+    
+    color: white;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center;
+    font-size: medium;
+    /* position: relative; */
+    flex-wrap: wrap;
+    
+    
+    
+    /* display: flex;
+    justify-content: flex-end; */
+
+}
+.navlink.active {
+
+    
+   
+    color: black;
+    background-color:  rgb(216, 212, 212) ;
+    transform: translateY(15px);
+    border-radius: 10%;
+    animation-name: slidedown ;
+    animation-duration: 0.75s;
+    animation-timing-function: linear;
+    filter: drop-shadow(0px -5px 1px rgb(236, 179, 74));
+    font-weight: 500;
+    /* letter-spacing: 1px; */
+    
+    
+
+    
+
+    
+
+}
+
+.panecito{
+    width: 60px;
+    /* position: absolute; */
+    /* left: 7px; */
+    right: -20%;
+    /* position:static; */
+}
+.thedogeappnav{
+    
+    height: 50px;
+    /* position: relative; */
+    left: 10px;
+}
+.searchlogo{
+    width: 45px;
+    transform: scale(0.75);
+    margin-right: 20px;
+    /* background-color: black; */
+    
+}
+
+.ajusteslogo{
+    width: 45px;
+    position: relative;
+    transform: scale(0.75);
+    /* margin-left: px; */
+    /* margin-right: -60px; */
+    /* padding-left: 10px */
+ 
+}
+.leftside{
+    display: flex;
+    align-items: center;
+    transform: scale(0.8);
+    /* background-color: blueviolet; */
+   
+
+}
+.rightside{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    /* background-color: blue; */
+    width: 300px;
+    /* margin-left: 10px; */
+    
+    /* right: 10px */
+}
+
+
+
+@keyframes slidedown {
+    0%{
+        transform: translateY(0px); 
+        border-radius: 0%;
+        font-weight: 0;
+        /* letter-spacing: 0px; */
+
+        /* opacity: 0; */
+    }
+    100%{
+        transform: translateY(15px); 
+        border-radius: 15%;
+        font-weight: 500;
+        /* letter-spacing: 1px; */
+        /* opacity: 1; */
+    }
+    
+}
+

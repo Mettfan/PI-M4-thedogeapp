@@ -1,0 +1,78 @@
+.canvas{
+
+    background-color: rgb(216, 212, 212);
+    position: absolute;
+    top: 10%;
+    /* bottom: 10%; */
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    
+    /* display: flex; */
+    /* align-items: center; */
+    justify-content: center;
+    /* top: 1%;
+    width: 70%;
+    height: 100%; */
+    /* opacity: 0.5; */
+    
+    
+}
+.canvas-content{
+
+    background-color: black;
+    color: white;
+   
+    
+}
+
+.canvas, .canvas-content{
+    animation: appearcanvascontent;
+    animation-duration: 0.7s;
+    animation-timing-function: linear;
+    transform: translateY(-25px);
+    opacity: 100%;
+    /* filter: blur(4px) ; */
+    filter: drop-shadow(5px 5px 1px rgb(155, 155, 155));
+    
+
+}
+.canvas-content{
+    filter: drop-shadow(0px 0px 0px);
+}
+/* #canvas-content{
+    animation: appearcanvascontent;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    transform: translateY(-20px);
+    opacity: 100%;
+    
+
+} */
+
+.homerender{
+    display: flex;
+}
+
+@keyframes appearcanvascontent {
+    0%{
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(-25px);
+    }
+    
+}
+@keyframes appearcanvas {
+    0%{
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100%{
+        opacity: 0.5;
+        transform: translateY(-20px);
+    }
+    
+}

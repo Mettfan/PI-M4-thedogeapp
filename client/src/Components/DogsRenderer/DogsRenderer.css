@@ -1,0 +1,17 @@
+.dogs{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    
+    /* justify-content: space-around; */
+    background-color: rgb(216, 212, 212);
+    
+    width: 100%;
+    /* top: ; */
+    /* right: 5%; */
+    flex-wrap: wrap ;
+    /* bottom: 5px; */
+    
+}
+

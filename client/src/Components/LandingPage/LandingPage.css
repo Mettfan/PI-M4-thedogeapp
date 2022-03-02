@@ -1,3 +1,24 @@
+.shiba{
+    animation-name: littleing;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    
+
+}
+@keyframes littleing {
+    0%{
+        transform: scale(1); 
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(0) ;
+
+    }
+    
+}
+
 .home{
     display: flex;
     /* background-color: red; */
@@ -22,7 +43,10 @@
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     position: absolute;
     bottom: -65px;
-    
+    /* transform: translate(0px, 0px); */
+    text-decoration: none;
+    color: black;
+
 
 }   
 #iniciar:hover{
@@ -41,6 +65,52 @@
     letter-spacing: 5px;
     
 
+    
+}
+#iniciar:not(:hover){
+    animation-name: mousenothover;
+    animation-duration: 0.4s;
+    
+    
+    font-size: medium;
+    transform: scale(1,1);
+    background-color:white ;
+    color: black;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    letter-spacing: 1px;
+    
+
+    
+}
+
+@keyframes mousenothover {
+    0%{
+        font-size: large;
+        transform: scale(1.3,1.3);
+        background-color: black;
+        color: white;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 50%;
+        padding-right: 50%;
+        letter-spacing: 5px;
+
+    }
+    100%{
+        
+        font-size: medium;
+        transform: scale(1,1);
+        background-color:white ;
+        color: black;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        letter-spacing: 1px;
+    }
     
 }
 

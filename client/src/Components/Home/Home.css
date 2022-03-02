@@ -1,0 +1,22 @@
+
+.flecha{
+    
+    width: 37px;
+
+}
+
+.flechabgbtn{
+    position: fixed;
+    
+
+}
+#leftarrow{
+    left: 0px;
+    transform: scaleX(-1);
+    top: 50%;
+}
+
+#rightarrow{
+    right: 0px;
+    top: 50%;
+}
