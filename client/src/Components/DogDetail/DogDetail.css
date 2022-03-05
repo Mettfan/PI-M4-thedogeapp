@@ -1,0 +1,87 @@
+.dogdetailextended{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    margin-top: 180px;
+    /* color: white; */
+    animation-name: appear;
+    animation-duration: 0.75s;
+    animation-timing-function: linear;
+}
+.imagedetailextended{
+    position: relative;
+    max-height: 700px;
+    min-width: 60%;
+    max-width: 80%;
+}
+.dogextended-description{
+    
+    display: flex;
+    position: relative;
+    /* flex-direction: column; */
+    min-width: 40%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.temperamentatts{
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+    justify-content: space-around;
+    background-color: white;
+    padding: 5px 5px 5px 5px;
+
+}
+.temperament-element{
+    
+    /* display: flex; */
+    /* width: 50%; */
+    /* justify-content: center; */
+    background-color: white;
+    
+
+
+}
+.namedetail{
+    background-color: red;
+    color:white;
+}
+.imperialatts{
+    color: rgb(12, 12, 141);
+    display: flex;
+    /* justify-content: space-around; */
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    
+    padding: 3px 3px 3px 3px;
+    background-color: rgb(248, 139, 139);
+   
+    
+}
+.metricatts{
+    color: rgb(0, 0, 0);
+    display: flex;
+    /* justify-content: space-around; */
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    padding: 3px 3px 3px 3px;
+    background-color: rgb(188, 139, 228);
+}
+
+
+@keyframes appear {
+
+    0%{
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    
+}

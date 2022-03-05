@@ -89,6 +89,7 @@
     transform: scale(0.75);
     margin-right: 20px;
     /* background-color: black; */
+    cursor: pointer;
     
 }
 
@@ -120,7 +121,13 @@
     /* right: 10px */
 }
 
-
+.searchbarvisible{
+    position: relative;
+    bottom: 30px;
+    left: 40%;
+    background-color: red;
+    width: 200px;
+}
 
 @keyframes slidedown {
     0%{

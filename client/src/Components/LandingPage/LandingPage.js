@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import TheDogeApp from '../../Images/TheDogeApp.png'
 import './LandingPage.css'
 import { useState } from 'react'
@@ -32,7 +32,7 @@ function LandingPage(props){
         <div className='home'>
 
         {console.log(window.location.href)}
-        <img src= { TheDogeApp } className={state.isfading?'shiba':'shibagain'}></img>
+        <img src= { TheDogeApp } className={state.isfading?'shiba':'shibagain'} alt=' '></img>
         {/* <button id='iniciar'> INICIAR </button> */}
         {   state.btnIsVisible ? <button  onClick={(e)=> handleClick(e)} id= 'iniciar' to='/home' >  START </button>: null }
         {state.isfading ? HandleRedirect(): console.log('not is fading') }

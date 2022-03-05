@@ -10,6 +10,12 @@
     margin-bottom: 10px ;
     padding: 10px;
 }
+.linkdogname{
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+
+}
 img.imgdog{
     position: relative;
     /* width: 350px; */
@@ -35,8 +41,9 @@ img.imgdog{
     margin-bottom: 10px ;
     /* width: 80px; */
     width: 350px;
-    height: 390px;
+    min-height: 390px;
 }
+
 .imgdog:hover{
     cursor: pointer;
 }
@@ -56,11 +63,19 @@ img.imgdog{
 .dogshortdetail{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    background-color: red;
+    /* justify-content: center; */
+    /* background-color: black; */
     font-size: small;
 
 }
+.dogextendeddetails{
+    color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
 .dogname{
     background-color: red;
     display: flex;
@@ -72,7 +87,7 @@ img.imgdog{
     /* background-color: red; */
     padding: 2%;
 }
-.temperament{
+#temperament{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -81,9 +96,113 @@ img.imgdog{
     
 
 }
-.imperialweight{
-    background-color: purple;
+
+.lb{
+    position: relative;
+    top: -10px;
+    background-color: black;
+    padding: 3px 7px 3px 7px;
+    color: yellow;
+    font-weight: 700;
+    
+    
 }
-.metricweight{
+.kg{
+    position: relative;
+    top: -10px;
+    background-color: black;
+    padding: 3px 7px 3px 7px;
+    color: yellow;
+    font-weight: 700;
+}
+#imperialweight{
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-weight: 600;
+    
+    
+}
+#metricweight{
     background-color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2px;
+    padding-right: 2px;
+    
+    font-weight: 600;
+    
+}
+.imperialheight{
+    background-color: purple;
+    color: white;
+    padding: 5px;
+    font-size: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.metricheight{
+    background-color: green;
+    color: white;
+    padding: 5px;
+    font-size: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    
+}
+.lifespan-description{
+    background-color:white;
+    padding: 10px 10px 10px 10px;
+    border-radius: 30%;
+}
+.icon-cheemschiquito{
+    
+    /* background-color: yellow; */
+    position: relative;
+    width: 23px;
+    height: 23px;
+    margin-left: 3px;
+    margin-right: 3px;
+    /* top: 5px; */
+    filter:invert(100%);
+    
+
+
+}
+.icon-cheemsgrandote{
+    
+    /* background-color: yellow; */
+    position: relative;
+    width: 20px;
+    height: 30px;
+    margin-left: 3px;
+    margin-right: 3px;
+    filter:invert(100%);
+    
+
+    /* top: 5px; */
+
+
+}
+
+.cheems{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(5px);
+    /* background-color: red; */
+    
+}
+
+
+.weight-description{
+    /* background-color: yellow; */
+    margin-bottom: 5px;
+    transform: translateY(-8px);
 }

@@ -5,14 +5,16 @@ import LandingPage from './Components/LandingPage/LandingPage';
 import Home from './Components/Home/Home'
 import Nav from './Components/Nav/Nav';
 import CreateDog from './Components/CreateDog/CreateDog'
-import { getDogs } from './redux/actions';
+import { getDogs, showFilteredDogs } from './redux/actions';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
+import DogDetail from './Components/DogDetail/DogDetail';
 
 
 function App(props) {
   useEffect(( )=> {
     props.getDogs()
+   
     console.log('DOGSGOT');
   }, [])
 
@@ -30,19 +32,29 @@ function App(props) {
       <Route exact path='/home' element={<Home></Home>} />
       <Route path='/create' element = {<CreateDog></CreateDog>}/>
       <Route path='*' element={<Nav></Nav>}/>
+      <Route path='/dogs/:name' element={ <DogDetail></DogDetail>}  />
 
       </Routes>
       
       
-      
+      {/* {console.log(props.dogs[0])} */}
     </div>
   );
 }
+
+const mapStateToProps = ( state ) => {
+  return {
+    dogs: state.dogs,
+    displayedDogs: state.displayedDogs
+  }
+}
+
 const mapDispatchToProps = ( dispatch ) => {
   return {
-      getDogs: ( ) => dispatch( getDogs() )
+      getDogs: ( ) => dispatch( getDogs() ),
+      showFilteredDogs: (dogs) => dispatch( showFilteredDogs(dogs) )
   }
 }
 
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

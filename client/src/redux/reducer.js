@@ -1,13 +1,15 @@
 
-import { GET_DOGS, PAGE_UP, PAGE_DOWN, ERROR }  from "./actions"
+import { GET_DOGS, PAGE_UP, PAGE_DOWN, ERROR, SHOW_FILTERED_DOGS }  from "./actions"
 const initialState = {
-    dogs: [],
+    dogs: [ ],
     page: {
         lim_i: 0,
         lim_s: 8,
         dogsxview: 8
     },
     favourites: [ ],
+    displayedDogs: [ ],
+    
     error: null
 
     // Test Dog: {name: 'Panfilo', image: {url: 'https://images7.memedroid.com/images/UPLOADED919/6193ba1d3c578.jpeg'}}
@@ -15,7 +17,7 @@ const initialState = {
 function reducer( state = initialState, action ){
     switch (action.type){
         case GET_DOGS: 
-            return { ...state, dogs: [action.payload] }
+            return { ...state, dogs: [action.payload], displayedDogs: [action.payload] }
         
 
         case PAGE_UP:
@@ -39,7 +41,10 @@ function reducer( state = initialState, action ){
                     lim_s: state.page.lim_s - 8  },    
             }
         case ERROR: 
-        return { ...state, error: action.payload }
+            return { ...state, error: action.payload }
+
+        case SHOW_FILTERED_DOGS:
+            return { ...state, displayedDogs: [action.payload] }
         default: 
             return { ...state }
         

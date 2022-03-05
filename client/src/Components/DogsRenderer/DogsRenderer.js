@@ -13,7 +13,10 @@ function DogsRenderer ( props ) {
         if( props.get === true ){
             props.getDogs()
 
+            
         }
+        
+        
         
     },[])
 
@@ -47,12 +50,13 @@ function DogsRenderer ( props ) {
             temperament = { dog.temperament }
             weight = { dog.weight }
             fav = { props.favourites.includes( dog.name ) }
-            key = { dog.name }
+            id = { dog.id}
+            key = { dog.id }
             
             ></Dog>).slice(props.page.lim_i, props.page.lim_s)
         }
 
-        {/* Button Up */}
+        
         
 
 
@@ -67,7 +71,8 @@ function DogsRenderer ( props ) {
 
 const mapStateToProps = ( state ) => {
     return {
-        dogs: state.dogs,
+        dogs: state.displayedDogs,
+        allDogs: state.dogs,
         page: state.page,
         favourites: state.favourites,
         error: state.error

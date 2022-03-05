@@ -5,6 +5,8 @@ export const ADD_DOG = 'ADD_DOG'
 export const PAGE_UP = 'PAGE_UP'
 export const PAGE_DOWN = 'PAGE_DOWN'
 export const ERROR = 'ERROR'
+export const SHOW_FILTERED_DOGS = 'SHOW_FILTERED_DOGS'
+
 export const getDogs = ( ) =>  async dispatch =>{
 
         // console.log('GOTDOGS')
@@ -48,5 +50,12 @@ export const pageDown = ( li, ls ) => {
     return {
         type: PAGE_DOWN,
         payload: {lim_i: li , lim_s: ls}
+    }
+}
+
+export const showFilteredDogs = ( dogs ) => {
+    return {
+        type: SHOW_FILTERED_DOGS,
+        payload: dogs
     }
 }

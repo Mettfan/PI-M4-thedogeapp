@@ -14,7 +14,7 @@ function CustomButton ( props ) {
 
     return  (<div>
 
-        <button onClick={( )=> handleClick()}
+        <button onClick={( )=> handleClick()} 
             style = {{
                 position: props.position,
                 top: props.top,
@@ -30,13 +30,13 @@ function CustomButton ( props ) {
             }}
         > 
          {props.defaultText===true?'CustomButton':null}
-        <img  src={props.image} style={{
+        <img  src={props.image}  style={{
             width: props.width,
             backgroundColor: props.imgBgColor,
             height: props.imgHeight
             
 
-            }}></img>
+            }} alt=' '></img>
 
          </button >
 

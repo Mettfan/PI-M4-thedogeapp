@@ -1,9 +1,10 @@
 import './Home.css'
 import Canvas from '../Canvas/Canvas'
 import DogsRenderer from '../DogsRenderer/DogsRenderer'
-import CustomButton from '../Tools/CustomButton/CustomButton'
+// import CustomButton from '../Tools/CustomButton/CustomButton'
 import { pageUp, pageDown } from '../../redux/actions'
 import { connect } from 'react-redux'
+import Flecha from '../../Images/Flecha.png'
 
 function Home( props ) {
     let changePage = (direction) => {
@@ -30,7 +31,7 @@ function Home( props ) {
 
         
 
-        <Canvas content = {<DogsRenderer get = {false} ></DogsRenderer>}></Canvas>
+        <Canvas content = {<DogsRenderer get = {false}  ></DogsRenderer>}></Canvas>
         {/* <div id="canvas">
 
             <div id="canvas-content">
@@ -41,7 +42,7 @@ function Home( props ) {
         <button className='flechabgbtn' id='rightarrow' onClick={()=> changePage('Up')}>
         
 
-        <img  className='flecha' src='http://assets.stickpng.com/images/580b57fcd9996e24bc43c44e.png'></img>
+        <img  className='flecha' src={Flecha} alt=' '></img>
         
 
       
@@ -54,7 +55,7 @@ function Home( props ) {
 
 
 
-        <img  className='flecha' src='http://assets.stickpng.com/images/580b57fcd9996e24bc43c44e.png'></img>
+        <img  className='flecha' src={Flecha} alt=' '></img>
 
             
 
