@@ -3,14 +3,21 @@ import { useParams } from "react-router"
 import { connect } from 'react-redux'
 import Canvas from '../Canvas/Canvas'
 import './DogDetail.css'
+import { useEffect } from "react"
+import { getDogDetail } from "../../redux/actions"
 function DogDetail( props ) {
     let params = useParams()
-    let dog = props.dogs[0]?.filter( doggy => doggy?.name === params?.name )[0]
+    useEffect(() =>{
+
+        props.getDogDetail(params.id)
+        
+    }, [])
+    let dog = props.dogDetail[0]
 
     return (
     <div>
         
-        {console.log(dog)}
+        {console.log(props.dogDetail)}
         <Canvas ></Canvas>
 
         <div className="dogdetailextended">
@@ -97,8 +104,14 @@ function DogDetail( props ) {
 const mapStateToProps = ( state ) => {
     return {
         dogs: state.dogs,
-        favourites: state.favourites
+        favourites: state.favourites,
+        dogDetail: state.dogDetail
+    }
+}
+const mapDispatchToProps = ( dispatch ) => {
+    return {
+        getDogDetail: ( id ) => dispatch( getDogDetail(id))
     }
 }
 
-export default connect(mapStateToProps)(DogDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(DogDetail)

@@ -11,7 +11,7 @@ function Dog ( props ){
 
 
     let HandleRedirectDog = ( ) => {
-        nav( `../dogs/${props.name}` )
+        nav( `../dogs/${props.id}` )
     }
 
     return (<div>
@@ -19,7 +19,7 @@ function Dog ( props ){
 
             {/* Nombre del perro en props.name */}
             <div className='dogname'>
-                <Link className='linkdogname' to={'/dogs/'+props?.name}>{ props?.name }</Link>
+                <Link className='linkdogname' to={'/dogs/'+props?.id}>{ props?.name }</Link>
             
             </div>
 
@@ -42,11 +42,11 @@ function Dog ( props ){
 
                         {/* Temperamento */}
                     <div id='temperament'>
-                    {temperament?.map( attribute => {
-                        return (<div className='attribute' key={attribute} >
+                    { temperament?.length > 0 ? temperament?.map( attribute => {
+                        return (<div className='attribute'  >
                             {attribute}
                         </div>)
-                    } )}
+                    } )  : 'Useless Dog' }
                     </div>
 
                         {/* Peso en Sistema Inglés */}
@@ -56,7 +56,7 @@ function Dog ( props ){
                         </div>
 
                         {imperialweight?.map( weight => {
-                            return ( <div className='weight-description' key={weight} >
+                            return ( <div className='weight-description'  >
                                 {weight}
                             </div>)
                         } )}
@@ -69,7 +69,7 @@ function Dog ( props ){
                             {'Kg'}
                         </div>
                         {metricweight?.map( weight => {
-                            return ( <div className='weight-description' key={weight}>
+                            return ( <div className='weight-description' >
                                 {weight}
                             </div>)
                         } )}

@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     position: relative;
-    margin-top: 180px;
+    margin-top: 130px;
     /* color: white; */
     animation-name: appear;
     animation-duration: 0.75s;
@@ -12,9 +12,10 @@
 }
 .imagedetailextended{
     position: relative;
-    max-height: 700px;
-    min-width: 60%;
-    max-width: 80%;
+    max-width: 350px;
+
+    /* height: 250px; */
+    max-height: 250px;
 }
 .dogextended-description{
     
@@ -47,6 +48,7 @@
 .namedetail{
     background-color: red;
     color:white;
+    position: relative;
 }
 .imperialatts{
     color: rgb(12, 12, 141);

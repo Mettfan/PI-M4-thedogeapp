@@ -14,4 +14,37 @@
     /* bottom: 5px; */
     
 }
+.loadingcheems{
+    width: 500px;
+    animation-name: rotation;
+    animation-timing-function: linear;
+    animation-duration: 5s ;
+    animation-iteration-count: infinite;
+}
 
+.errornetwork{
+    color: red;
+    font-size: larger;
+    
+}
+
+@keyframes rotation {
+    0%{
+        transform: rotate(90deg);
+    }
+    25%{
+        transform: rotate(180deg);
+    }
+    50%{
+        
+        transform: rotate(270deg);
+    }
+    75%{
+        
+        transform: rotate(360deg);
+    }
+    100%{
+        
+        transform: rotate(90deg);
+    }
+}

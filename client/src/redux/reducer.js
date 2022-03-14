@@ -1,7 +1,8 @@
 
-import { GET_DOGS, PAGE_UP, PAGE_DOWN, ERROR, SHOW_FILTERED_DOGS }  from "./actions"
+import { GET_DOGS, PAGE_UP, PAGE_DOWN, ERROR, SHOW_FILTERED_DOGS, GET_DOG_DETAIL }  from "./actions"
 const initialState = {
     dogs: [ ],
+    dogDetail: {},
     page: {
         lim_i: 0,
         lim_s: 8,
@@ -19,6 +20,8 @@ function reducer( state = initialState, action ){
         case GET_DOGS: 
             return { ...state, dogs: [action.payload], displayedDogs: [action.payload] }
         
+        case GET_DOG_DETAIL:
+            return { ...state, dogDetail: action.payload}
 
         case PAGE_UP:
             return { ...state, 
@@ -26,8 +29,8 @@ function reducer( state = initialState, action ){
                 // [state.page.lim_s]: (state.page.lim_s + state.page.dogsxview) > state.dogs.length ? (state.page.lim_s + state.page.dogsxview) : state.dogs.length ,
                 page: {
                     ...state.page, 
-                    lim_i: state.page.lim_i + 8, 
-                    lim_s: state.page.lim_s + 8 },
+                    lim_i: state.page.lim_i + 8 - action.payload, 
+                    lim_s: state.page.lim_s + 8 + action.payload },
                 
             
             }

@@ -3,6 +3,7 @@ import Dog from '../Dog/Dog'
 import './DogsRenderer.css'
 import { connect } from 'react-redux'
 import { getDogs } from '../../redux/actions'
+import LoadingCheems from '../../Images/LoadingCheems.png'
 // import  CustomButton  from '../Tools/CustomButton/CustomButton'
 
 function DogsRenderer ( props ) {
@@ -20,40 +21,47 @@ function DogsRenderer ( props ) {
         
     },[])
 
-    let changePage = (direction) => {
-        switch (direction){
-            case 'Up': 
-                console.log('Up')
-                break;
-                
-            case 'Down':
-                console.log('Down')
-                break
-            default: 
-                console.log('None')
-        }
-    }
+    
     
     
     return(<div>
        
 
+        {/*        
         
+                if(  existe   ){
+                    return 'algo'
+                }
+                else{
+
+                    return 'nada'
+
+                }
+
+                existe ? 'algo' : 'nada'
+        
+        
+        
+        */}
         
         <div className='dogs'>
-            { props.error !== null ? 'NETWORK ERROR :(' : null}
+
+            <div className='errornetwork'>
+
+            { props.error !== null ? ['NETWORK ERROR :(', <img src='https://images7.memedroid.com/images/UPLOADED919/6193ba1d3c578.jpeg' /> ] : null}
+            </div>
        
         { 
-        props?.dogs[0]?.map( dog => <Dog 
+        props?.dogs?.length > 0 ? props?.dogs[0]?.map( dog => <Dog 
             name = { dog.name } 
             image = { dog.image } 
             temperament = { dog.temperament }
             weight = { dog.weight }
             fav = { props.favourites.includes( dog.name ) }
             id = { dog.id}
-            key = { dog.id }
             
-            ></Dog>).slice(props.page.lim_i, props.page.lim_s)
+            
+            ></Dog>).slice(props.page.lim_i, props.page.lim_s) : (  props?.error=== null  ? <img className='loadingcheems' src={LoadingCheems}></img> : null)
         }
 
         
@@ -73,7 +81,7 @@ const mapStateToProps = ( state ) => {
     return {
         dogs: state.displayedDogs,
         allDogs: state.dogs,
-        page: state.page,
+        // page: state.page,
         favourites: state.favourites,
         error: state.error
 

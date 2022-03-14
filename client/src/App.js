@@ -12,11 +12,11 @@ import DogDetail from './Components/DogDetail/DogDetail';
 
 
 function App(props) {
-  useEffect(( )=> {
-    props.getDogs()
+  // useEffect(( )=> {
+  //   props.getDogs()
    
-    console.log('DOGSGOT');
-  }, [])
+  //   console.log('DOGSGOT');
+  // }, [])
 
 
 
@@ -32,7 +32,7 @@ function App(props) {
       <Route exact path='/home' element={<Home></Home>} />
       <Route path='/create' element = {<CreateDog></CreateDog>}/>
       <Route path='*' element={<Nav></Nav>}/>
-      <Route path='/dogs/:name' element={ <DogDetail></DogDetail>}  />
+      <Route path='/dogs/:id' element={ <DogDetail></DogDetail>}  />
 
       </Routes>
       

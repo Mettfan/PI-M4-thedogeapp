@@ -1,6 +1,7 @@
 import axios from "axios"
 
 export const GET_DOGS = 'GET_DOGS'
+export const GET_DOG_DETAIL = 'GET_DOG_DETAIL'
 export const ADD_DOG = 'ADD_DOG'
 export const PAGE_UP = 'PAGE_UP'
 export const PAGE_DOWN = 'PAGE_DOWN'
@@ -10,7 +11,7 @@ export const SHOW_FILTERED_DOGS = 'SHOW_FILTERED_DOGS'
 export const getDogs = ( ) =>  async dispatch =>{
 
         // console.log('GOTDOGS')
-        axios.get('https://api.thedogapi.com/v1/breeds').then( response => {
+        axios.get('http://localhost:3001/dogs').then( response => {
             dispatch({
                 type: GET_DOGS,
                 payload: response.data
@@ -32,6 +33,20 @@ export const getDogs = ( ) =>  async dispatch =>{
         
 }
 
+export const getDogDetail = ( id ) => async ( dispatch ) => {
+    axios.get('http://localhost:3001/dogs/'+id).then( response => {
+
+        dispatch( {
+
+            type: GET_DOG_DETAIL,
+            payload: response.data
+
+        } )
+
+    })
+
+}
+
 export  const addDog =  ( name, height, weight, lifespec  ) =>{
     return {
         type: ADD_DOG,
@@ -40,16 +55,16 @@ export  const addDog =  ( name, height, weight, lifespec  ) =>{
     
 }
 
-export const pageUp = ( li, ls ) => {
+export const pageUp = ( offset ) => {
     return {
         type: PAGE_UP,
-        payload: {lim_i: li , lim_s: ls}
+        payload: offset
     }
 }
-export const pageDown = ( li, ls ) => {
+export const pageDown = ( offset ) => {
     return {
         type: PAGE_DOWN,
-        payload: {lim_i: li , lim_s: ls}
+        payload: offset
     }
 }
 

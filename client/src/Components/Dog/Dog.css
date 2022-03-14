@@ -12,7 +12,7 @@
 }
 .linkdogname{
     text-decoration: none;
-    color: white;
+    color: rgb(255, 255, 255);
     letter-spacing: 2px;
 
 }
@@ -32,8 +32,8 @@ img.imgdog{
 
 .dogbackground{
     /* display: flex; */
-    background-color: rgb(216, 212, 212);
-    filter: drop-shadow(5px 5px 5px blue);
+    background-color: rgb(197, 192, 240);
+    filter: drop-shadow(5px 5px 5px rgb(184, 124, 184));
     margin-left: 30px ;
     margin-right: 30px ;
     /* width: 70%; */
@@ -77,11 +77,12 @@ img.imgdog{
 
 
 .dogname{
-    background-color: red;
+    background-color: rgb(184, 124, 184);
     display: flex;
     justify-content: center;
     /* position: absolute; */
     top: 30px;
+    font-weight: 600;
 }
 .attribute{
     /* background-color: red; */
