@@ -5,6 +5,7 @@ import { handleDognameSubmit, handleDogheightSubmit, handleDogweightSubmit, hand
 import axios from "axios"
 import Dog from "../../../../client/src/Components/Dog/Dog.js"
 import { useNavigate } from "react-router"
+import { connect } from "react-redux"
 
 
 //Create Dog nos funcionará como la pagina donde se renderiza el formulario de creacion 
@@ -87,7 +88,7 @@ function CreateDog ( props ){
             let heightunity = state.heightunity
             let weightunity = state.weightunity
             let temperaments = state.temperaments
-            
+            console.log('HANDLEDOGSUBMIT: '+ handleDogheightSubmit(dogname))
             let checks = [
                 handleDognameSubmit(dogname),
                 handleDogheightSubmit(dogheightmin,dogheightmax),
@@ -96,12 +97,17 @@ function CreateDog ( props ){
                 
 
             ]
+
+            if(props.dogGlobalList.includes( dog => dog.name === dogname)){
+                checks[0] = -1
+            }
+
             if(!checks.includes(-1)){
                 let height_measure =  heightunity === 'In' ? 'imperial': 'metric'
                 let weight_measure =  weightunity === 'Lb' ? 'imperial': 'metric'
                 
                 let formattedPost = { 
-                    name: dogname, 
+                    name: dogname[0].toUpperCase().concat(dogname.slice(1, -1).toLowerCase()), 
                     height: { 
                         [height_measure]:`${dogheightmin} - ${dogheightmax}`,
                         [height_measure==='metric'?'imperial':'metric']: (height_measure==='metric'? `${Math.ceil(dogheightmin/2.54)} - ${Math.ceil(dogheightmax/2.54)}` : `${dogheightmin*2.54} - ${dogheightmax*2.54}`)
@@ -110,12 +116,15 @@ function CreateDog ( props ){
                         [weight_measure]:`${dogweightmin} - ${dogweightmax}`,
                         [weight_measure==='metric'?'imperial':'metric']:  (weight_measure==='metric'? `${Math.ceil(dogweightmin*2.2)} - ${Math.ceil(dogweightmax*2.2)}` : `${dogweightmin/2.2} - ${dogweightmax/2.2}`)
                     },
-                    life_span: doglifespan,
-                    temperament: temperaments
+                    life_span: doglifespan + ' years',
+                    temperament: temperaments 
                 }
 
-                axios.post('http://localhost:3001/dogs', formattedPost )
+                axios.post('http://localhost:3001/dogs', formattedPost ).then( response => {
+                    console.log(response)
+                })
                 console.log('Subido!')
+                
                 console.log(formattedPost)
                 nav('../home')
 
@@ -206,7 +215,7 @@ function CreateDog ( props ){
             <div className="dogPreview">
 
                 <Dog 
-                    name = { state.dogname }
+                    name = { state?.dogname[0]?.toUpperCase()?.concat(state.dogname?.slice(1, -1)?.toLowerCase()) }
                     weight = { {
                         [weight_measure]:`${state.dogweightmin} - ${state.dogweightmax}` 
                     } }
@@ -237,4 +246,10 @@ function CreateDog ( props ){
 
     </div>)
 }
-export default CreateDog
+
+const mapStateToProps = (state) => {
+    return{
+        dogGlobalList: state.displayedDogs
+    }
+}
+export default connect(mapStateToProps)(CreateDog)

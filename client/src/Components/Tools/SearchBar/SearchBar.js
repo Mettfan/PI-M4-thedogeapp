@@ -269,12 +269,12 @@ function SearchBar ( props ){
                 </select>
                 {state.filter === 'Weight' || state.filter === 'Height' ? <button type="button" name="switch-unity" onClick={ ( e ) => toogleUnity( e ) }>{state.unity}</button>:null  }
                 
+                <input type={state.filter === 'Name' || state.filter === 'Temperament'?'text':'number'} placeholder={'Dog ' + state.filter  } onChange = {( e ) => handleUserInputOnChange(e)}></input>
             </div>
-            <input type={state.filter === 'Name' || state.filter === 'Temperament'?'text':'number'} placeholder={'Dog ' + state.filter  } onChange = {( e ) => handleUserInputOnChange(e)}></input>
             <div>
                 
-                <button type="button" className="orderTypebtn" onClick={ () => toogleOrderType() }> { 'Ordering Type: '+state.orderType}</button>
-                <button type="button" className="orderBybtn" onClick={ () => toogleOrderBy() }>{'Order By: '+state.orderBy}</button>
+                <button type="button" className="orderTypebtn" onClick={ () => toogleOrderType() }> { <img className='arrow-img' src={state.orderType === 'a'?'https://icons.iconarchive.com/icons/icons8/ios7/256/Arrows-Up-icon.png':'https://icons.iconarchive.com/icons/icons8/ios7/256/Arrows-Down-icon.png' }></img>}</button>
+                <button type="button" className="orderBybtn" onClick={ () => toogleOrderBy() }>{state.orderBy === 'w'?<img className="orderby-img" src={'https://icons.iconarchive.com/icons/icons8/ios7/256/Science-Weight-icon.png'}></img>: <div className="orderby-txt">Az</div> }</button>
             
             </div>    
 

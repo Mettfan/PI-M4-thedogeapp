@@ -5,7 +5,27 @@
     align-items: center;
     flex-wrap: wrap;
     /* position: relative; */
-    background-color: rgb(180, 179, 179);
+    background-color: rgb(221, 205, 224);
     /* bottom: 45px */
     margin-top: -35px;
 }
+.arrow-img{
+    width: 30px;
+}
+.orderby-img{
+    width: 30px;
+    font-weight: 400;
+    
+}
+.orderby-txt{
+    width: 30px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+
+    
+}
+/* .orderBybtn{
+    display: flex;
+   
+} */

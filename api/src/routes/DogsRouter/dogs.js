@@ -118,8 +118,7 @@ router.post( '/' , async ( req, res ) => {
     Dog.findAll({where: {name: postedDog.name}}).then( async (doggy) => {
 
         if(doggy.length>0){
-            console.log('Ya existe ')
-            res.status(409)
+            
         }
         else{
             let createdDog = await Dog.create(postedDog)
@@ -131,6 +130,8 @@ router.post( '/' , async ( req, res ) => {
             res.status(201).send(postedDog)
 
         }
+        console.log('Ya existe ')
+            res.status(409)
 
 
 

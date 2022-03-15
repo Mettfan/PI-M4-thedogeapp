@@ -11,7 +11,10 @@ function Dog ( props ){
 
 
     let HandleRedirectDog = ( ) => {
-        nav( `../dogs/${props.id}` )
+        if(props.id){
+            nav( `../dogs/${props.id}` )
+
+        }
     }
 
     return (<div>
@@ -19,7 +22,7 @@ function Dog ( props ){
 
             {/* Nombre del perro en props.name */}
             <div className='dogname'>
-                <Link className='linkdogname' to={'/dogs/'+props?.id}>{ props?.name }</Link>
+                <div className='linkdogname' onClick={() => HandleRedirectDog()}>{ props?.name }</div>
             
             </div>
 

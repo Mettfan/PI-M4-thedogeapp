@@ -13,18 +13,13 @@ function DogDetail( props ) {
         
     }, [])
     let dog = props.dogDetail[0]
-
-    return (
-    <div>
-        
-        {console.log(props.dogDetail)}
-        <Canvas ></Canvas>
-
-        <div className="dogdetailextended">
-
-            <div className="namedetail">
-                { dog?.name }
+    let DogShowed = ( ) => {
+        return (<div>
+            <div className="namebg">
+                <div className="detailname"> { dog?.name }</div>
             </div>
+            <div className="dogdetailextended">
+
 
             <img className="imagedetailextended" src={ dog?.image?.url }></img>
 
@@ -42,38 +37,55 @@ function DogDetail( props ) {
                 
 
                 <div className="imperialatts">
-                    <div>Lb</div>
-                    {dog?.weight?.imperial?.split(' - ').map( att => {
-                        return (<div className="imperial-weight">
-                            {att}
-                        </div> )
-                    })}
+                    <img className="unity-img-eng" src="https://icons.iconarchive.com/icons/wikipedia/flags/1024/GB-United-Kingdom-Flag-icon.png"></img>
+                    
+                    <div className="unityMeasure-imp">Lb</div>
 
-                    <div>In</div>
-                    {dog?.height?.imperial?.split(' - ').map( att => {
-                        return (<div className="imperial-height">
-                            {att}
-                        </div> )
-                    })}
+                    
+                    
+                    <div className="numbercontainer">
+                        {dog?.weight?.imperial?.split().map( att => {
+                            return (<div className="imperial-weight">
+                                {att}
+                            </div> )
+                        })}
+                    </div>
+
+
+                    <div className="unityMeasure-imp">In</div>
+                    <div className="numbercontainer">
+                        {dog?.height?.imperial?.split().map( att => {
+                            return (<div className="imperial-height">
+                                {att}
+                            </div> )
+                        })}
+                    </div>
 
                 </div>
 
 
                 <div className="metricatts">
-                    <div>Kg</div>
-                    {dog?.weight?.metric?.split(' - ').map( att => {
-                        return (<div className="metric-weight">
-                            
-                            {att}
-                            
-                            </div>)
-                    })}
-                    <div>Cm</div>
-                    {dog?.height?.metric?.split(' - ').map( att => {
-                        return (<div className="imperial-height">
-                            {att}
-                        </div> )
-                    })}
+                    <img className="unity-img-esp" src="https://icons.iconarchive.com/icons/custom-icon-design/flat-europe-flag/256/Spain-icon.png"></img>
+                    <div className="unityMeasure-met">Kg</div>
+
+                    <div className="numbercontainer">
+                        {dog?.weight?.metric?.split().map( att => {
+                            return (<div className="metric-weight">
+                                
+                                {att}
+                                
+                                </div>)
+                        })}
+                    </div>
+
+                    <div className="unityMeasure-met">Cm</div>
+                    <div className="numbercontainer">
+                        {dog?.height?.metric?.split().map( att => {
+                            return (<div className="imperial-height">
+                                {att}
+                            </div> )
+                        })}
+                    </div>
                 
                 </div>
 
@@ -89,16 +101,35 @@ function DogDetail( props ) {
 
 
 
-        </div>
-
-        
-        
+            </div>
 
 
+                    </div>)
+                }
+                return (
+                <div>
+                    
+                    
+                    <Canvas content = {<div className="dogdetailcanvas-content">
+                            <div>
+                            <DogShowed></DogShowed>
+                            </div>
+                            
+
+                        </div>}></Canvas>
+                    
 
 
-    </div>
-    )
+                        
+                    
+                    
+                    
+
+
+
+
+                </div>
+                )
 }
 
 const mapStateToProps = ( state ) => {

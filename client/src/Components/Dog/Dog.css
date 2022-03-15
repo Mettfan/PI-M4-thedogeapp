@@ -16,6 +16,10 @@
     letter-spacing: 2px;
 
 }
+.linkdogname:hover{
+    cursor: pointer;
+
+}
 img.imgdog{
     position: relative;
     /* width: 350px; */
@@ -93,6 +97,8 @@ img.imgdog{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
+
     background-color: rgb(118, 118, 219);
     
 
