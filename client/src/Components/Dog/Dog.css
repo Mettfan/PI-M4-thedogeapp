@@ -93,7 +93,7 @@ img.imgdog{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    background-color: blue;
+    background-color: rgb(118, 118, 219);
     
 
 }

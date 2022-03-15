@@ -3,6 +3,8 @@ import './CreateDog.css'
 import Canvas from "../Canvas/Canvas"
 import { handleDognameSubmit, handleDogheightSubmit, handleDogweightSubmit, handleDoglifespanSubmit } from './Validations.js'
 import axios from "axios"
+import Dog from "../../../../client/src/Components/Dog/Dog.js"
+import { useNavigate } from "react-router"
 
 
 //Create Dog nos funcionará como la pagina donde se renderiza el formulario de creacion 
@@ -101,10 +103,12 @@ function CreateDog ( props ){
                 let formattedPost = { 
                     name: dogname, 
                     height: { 
-                        [height_measure]:`${dogheightmin} - ${dogheightmax}` 
+                        [height_measure]:`${dogheightmin} - ${dogheightmax}`,
+                        [height_measure==='metric'?'imperial':'metric']: (height_measure==='metric'? `${Math.ceil(dogheightmin/2.54)} - ${Math.ceil(dogheightmax/2.54)}` : `${dogheightmin*2.54} - ${dogheightmax*2.54}`)
                     },
                     weight: { 
-                        [weight_measure]:`${dogweightmin} - ${dogweightmax}` 
+                        [weight_measure]:`${dogweightmin} - ${dogweightmax}`,
+                        [weight_measure==='metric'?'imperial':'metric']:  (weight_measure==='metric'? `${Math.ceil(dogweightmin*2.2)} - ${Math.ceil(dogweightmax*2.2)}` : `${dogweightmin/2.2} - ${dogweightmax/2.2}`)
                     },
                     life_span: doglifespan,
                     temperament: temperaments
@@ -113,6 +117,7 @@ function CreateDog ( props ){
                 axios.post('http://localhost:3001/dogs', formattedPost )
                 console.log('Subido!')
                 console.log(formattedPost)
+                nav('../home')
 
 
             }
@@ -138,8 +143,10 @@ function CreateDog ( props ){
         }
 
 
+        let height_measure =  state.heightunity === 'In' ? 'imperial': 'metric'
+        let weight_measure =  state.weightunity === 'Lb' ? 'imperial': 'metric'
 
-
+        let nav = useNavigate()
         return (<div className="formbg">
             {console.log(state.temperament)}
 
@@ -176,11 +183,11 @@ function CreateDog ( props ){
                             <input className="lifespan-input" type='number' name="doglifespan" placeholder="Years" onChange={ (e) => handleOnChange(e) }></input>
                         </div>
 
-                {/* Button Create */}
-                    <button className="buttoncreate" type="submit" >CREATE</button>
+             
 
 
                 {/* Temperament Input */}
+                    <label>Add Temperament</label>
                     <select name = 'temperament' id = 'temperament-input'onChange={ (e) => handleTemperamentOnChange(e)}>
                         {state?.temperament?.length > 0 ?state.temperament.map( (temperament) => {
 
@@ -193,7 +200,25 @@ function CreateDog ( props ){
                     </select>
                     
 
+                    
+                {/* Button Create */}
+                    <button className="buttoncreate" type="submit" >CREATE</button>
+            <div className="dogPreview">
+
+                <Dog 
+                    name = { state.dogname }
+                    weight = { {
+                        [weight_measure]:`${state.dogweightmin} - ${state.dogweightmax}` 
+                    } }
+                    height = { {
+                        [height_measure]:`${state.dogheightmin} - ${state.dogheightmax}` 
+                    } }
+                    temperament = {state.temperaments.join(', ')}
+                    image = {{url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Dog_silhouette.svg/2067px-Dog_silhouette.svg.png'}}
+                ></Dog>
+            </div>
             </form>
+            
             {state.temperaments?.map( temperament => {
                 return (<div name= {temperament} onClick={ (e) => deleteTemperament(e)}>{temperament}</div>)
             })}

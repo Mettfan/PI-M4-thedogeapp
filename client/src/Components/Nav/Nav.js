@@ -6,6 +6,7 @@ import AjustesLogo from '../../Images/AjustesLogo.png'
 import TheDogeAppNav from '../../Images/TheDogeAppNav.png'
 import { useState } from 'react'
 import SearchBar from "../Tools/SearchBar/SearchBar";
+import { useNavigate } from 'react-router'
 
 function Nav(){
     let [ state, setState ] = useState({
@@ -16,6 +17,7 @@ function Nav(){
         setState({...state, searchBarisVisible: !state.searchBarisVisible})
 
     }
+    let nav = useNavigate()
 
     return(<div>
         <div className="nav-container">
@@ -25,7 +27,7 @@ function Nav(){
 
                 <div className="leftside">
                     <img className="panecito" src={DogLogoNav} alt=' '></img>
-                    <img className="thedogeappnav" src={TheDogeAppNav} alt=' '></img>
+                    <img className="thedogeappnav" src={TheDogeAppNav} alt=' ' onClick={ ( ) => nav('../')}></img>
 
                 </div>
                     

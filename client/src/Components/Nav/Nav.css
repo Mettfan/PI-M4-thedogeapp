@@ -121,13 +121,13 @@
     /* right: 10px */
 }
 
-.searchbarvisible{
+/* .searchbarvisible{
     position: relative;
-    bottom: 30px;
+    height: 200px;
     left: 40%;
     background-color: red;
     width: 200px;
-}
+} */
 
 @keyframes slidedown {
     0%{

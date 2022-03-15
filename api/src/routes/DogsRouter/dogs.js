@@ -1,6 +1,7 @@
 const { default: axios } = require('axios')
 const { Router } = require('express')
-const { Dog } = require('../../db.js')
+const { Dog, Temperament } = require('../../db.js')
+// const Temperament = require('../../models/Temperament.js')
 
 let router = Router()
 
@@ -107,13 +108,47 @@ router.get( '/:id' ,  ( req, res ) => {
 } )
 
 let id = 300
-router.post( '/' , ( req, res ) => {
-    let postedDog = {...req.body, temperament: req.body.temperament.join(', '), id: ++id}
+router.post( '/' , async ( req, res ) => {
     
-    Dog.create(postedDog)
+    
+    //Hacemos una funcion que rellene el imperial value a partir del metric
 
     
-    res.status(201).send(postedDog)
+    let postedDog = {...req.body, id: ++id, temperament: req.body.temperament.join(', '), id: ++id }
+    Dog.findAll({where: {name: postedDog.name}}).then( async (doggy) => {
+
+        if(doggy.length>0){
+            console.log('Ya existe ')
+            res.status(409)
+        }
+        else{
+            let createdDog = await Dog.create(postedDog)
+            req.body.temperament.forEach( async temperament => {
+                let dogTemperament  = await Temperament.findOne({where: {name: temperament}})
+                createdDog.addTemperament(dogTemperament)
+            })
+
+            res.status(201).send(postedDog)
+
+        }
+
+
+
+
+    })
+
+
+
+
+    
+    
+    
+    
+    
+        
+    
+
+    
 })
 
 

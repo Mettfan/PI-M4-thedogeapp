@@ -3,13 +3,11 @@ form{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 10px 60px 60px 60px;
+    /* width: 50%; */
     
 }
-.formbg{
-    /* background-color: red; */
-    /* position: fixed; */
-    top: 50%;
-}
+
 input{
     padding: 5px 5px 5px 5px;
     margin: 5px 3px 15px 3px;
@@ -45,4 +43,8 @@ input{
 }
 .doglifespaninput{
 
+}
+.dogPreview{
+    position: relative;
+    
 }

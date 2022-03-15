@@ -33,6 +33,7 @@ module.exports = (sequelize) => {
     },
     temperament: {
       type: DataTypes.STRING,
+      allowNull: true,
       defaultValue: 'Useless Dog'
     }
   }, { timestamps: false});

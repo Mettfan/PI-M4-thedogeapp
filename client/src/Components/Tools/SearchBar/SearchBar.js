@@ -1,6 +1,7 @@
 import { connect } from "react-redux"
 import { useState } from "react"
 import { showFilteredDogs } from "../../../redux/actions"
+import './SearchBar.css'
 
 function SearchBar ( props ){
 
@@ -252,21 +253,30 @@ function SearchBar ( props ){
     }
 
     return (<div>
-        <form onSubmit={ ( e ) => handleSearch(e) } >
-        <select name="filters" id="filters" onChange={(e) => handleInputOnChange(e) }>
-            <option value='Search' disabled={true} className='placeholder'> Filter By... </option>
-            <option value='Name' > Name </option>
-            <option value='Temperament'> Temperament </option>
-            <option value='Weight'> Weight </option>
-            <option value='Height'> Height </option>
-        </select>
-        
-        <input type={state.filter === 'Name' || state.filter === 'Temperament'?'text':'number'} placeholder={'Dog ' + state.filter  } onChange = {( e ) => handleUserInputOnChange(e)}></input>
-        {state.filter === 'Weight' || state.filter === 'Height' ? <button type="button" name="switch-unity" onClick={ ( e ) => toogleUnity( e ) }>{state.unity}</button>:null  }
-        
 
-        <button type="button" className="orderTypebtn" onClick={ () => toogleOrderType() }> { 'Ordering Type: '+state.orderType}</button>
-        <button type="button" className="orderBybtn" onClick={ () => toogleOrderBy() }>{'Order By: '+state.orderBy}</button>
+        
+            
+        
+        <form className="create-form" onSubmit={ ( e ) => handleSearch(e) } >
+            <div>
+                
+                <select name="filters" id="filters" onChange={(e) => handleInputOnChange(e) }>
+                    <option value='Search' disabled={true} className='placeholder'> Filter By... </option>
+                    <option value='Name' > Name </option>
+                    <option value='Temperament'> Temperament </option>
+                    <option value='Weight'> Weight </option>
+                    <option value='Height'> Height </option>
+                </select>
+                {state.filter === 'Weight' || state.filter === 'Height' ? <button type="button" name="switch-unity" onClick={ ( e ) => toogleUnity( e ) }>{state.unity}</button>:null  }
+                
+            </div>
+            <input type={state.filter === 'Name' || state.filter === 'Temperament'?'text':'number'} placeholder={'Dog ' + state.filter  } onChange = {( e ) => handleUserInputOnChange(e)}></input>
+            <div>
+                
+                <button type="button" className="orderTypebtn" onClick={ () => toogleOrderType() }> { 'Ordering Type: '+state.orderType}</button>
+                <button type="button" className="orderBybtn" onClick={ () => toogleOrderBy() }>{'Order By: '+state.orderBy}</button>
+            
+            </div>    
 
         <button type="submit">Search</button>
         </form>
