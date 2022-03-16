@@ -15,7 +15,7 @@
     
 }
 .loadingcheems{
-    width: 500px;
+    width: 400px;
     animation-name: rotation;
     animation-timing-function: linear;
     animation-duration: 5s ;

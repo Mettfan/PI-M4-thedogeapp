@@ -5,6 +5,7 @@ import Canvas from '../Canvas/Canvas'
 import './DogDetail.css'
 import { useEffect } from "react"
 import { getDogDetail } from "../../redux/actions"
+import LoadingCheems from '../../Images/LoadingCheems.png'
 // import  DogsRenderer  from '../DogsRenderer/DogsRenderer.js'
 function DogDetail( props ) {
     let params = useParams()
@@ -113,7 +114,7 @@ function DogDetail( props ) {
                     
                     <Canvas content = {<div className="dogdetailcanvas-content">
                             <div>
-                                <DogShowed></DogShowed>
+                                {dog?.image!== undefined?<DogShowed></DogShowed>:<img className='loadingcheems' src={LoadingCheems}></img>}
                             </div>
                             
                             
