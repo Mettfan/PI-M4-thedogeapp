@@ -34,28 +34,34 @@ function CreateDog ( props ){
 
 
         })
-
+        
+        // Cada vez que el formulario se muestre, va a traer los temperamentos en el estado desde el backend
         useEffect(  () => { 
              axios.get('http://localhost:3001/temperament').then(  response => {
                 setState( {...state, temperament: response.data} )
-                console.log(state.temperament)
+                // console.log(state.temperament)
                 
             })
          }, [])
     
 
+        //handleOnChange nos permitirá observar lo que el usuario escribe en cada input cargando esta data al estado
         let handleOnChange = ( e ) => {
-            setState({...state, [e.target.name]: e.target.value })
-            
+            setState({...state, [e.target.name]: e.target.value }) 
             // console.log(state[e.target.name] )
         }
         
+        // Cambia las unidades que se muestran de acuerdo al sistema de referencia elegido
         let toogleHeightUnity = ( ) => {
             setState({...state, heightunity: state.heightunity === 'Cm'?'In':'Cm'})
         }
+
+        // Cambia las unidades que se muestran de acuerdo al sistema de referencia elegido
         let toogleWeightUnity = ( ) => {
             setState({...state, weightunity: state.weightunity === 'Kg'?'Lb':'Kg'})
         }
+
+        //Agrega un temperamento a la plantilla del Dog a crear
         let handleTemperamentOnChange = (e) => {
             let dogTemperamentlist = new Set(state.temperaments) 
             dogTemperamentlist.add(e.target.value)
@@ -70,6 +76,8 @@ function CreateDog ( props ){
             console.log(state.temperaments)
 
         }
+
+        //Quita el último temperamento agregado a la plantilla de  Dog
         let deleteTemperament = (e) => {
             let dogTemperamentlist = state.temperaments
             dogTemperamentlist.pop()
@@ -77,6 +85,7 @@ function CreateDog ( props ){
             setState({...state, temperaments: dogTemperamentlist})
         } 
 
+        //Controla la subida de la plantilla a la base de datos al hacer una serie de verificaciones a cada dato ingresado
         let handleOnSubmit = ( e ) => {
             e.preventDefault()
             let dogname = state.dogname
@@ -212,22 +221,25 @@ function CreateDog ( props ){
                     
                 {/* Button Create */}
                     <button className="buttoncreate" type="submit" >CREATE</button>
-            <div className="dogPreview">
 
-                <Dog 
-                    name = { state?.dogname[0]?.toUpperCase()?.concat(state.dogname?.slice(1, -1)?.toLowerCase()) }
-                    weight = { {
-                        [weight_measure]:`${state.dogweightmin} - ${state.dogweightmax}` 
-                    } }
-                    height = { {
-                        [height_measure]:`${state.dogheightmin} - ${state.dogheightmax}` 
-                    } }
-                    temperament = {state.temperaments.join(', ')}
-                    image = {{url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Dog_silhouette.svg/2067px-Dog_silhouette.svg.png'}}
-                ></Dog>
-            </div>
+                {/* Plantilla Mostrada */}
+                <div className="dogPreview">
+
+                    <Dog 
+                        name = { state?.dogname[0]?.toUpperCase()?.concat(state.dogname?.slice(1, -1)?.toLowerCase()) }
+                        weight = { {
+                            [weight_measure]:`${state.dogweightmin} - ${state.dogweightmax}` 
+                        } }
+                        height = { {
+                            [height_measure]:`${state.dogheightmin} - ${state.dogheightmax}` 
+                        } }
+                        temperament = {state.temperaments.join(', ')}
+                        image = {{url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Dog_silhouette.svg/2067px-Dog_silhouette.svg.png'}}
+                    ></Dog>
+                </div>
             </form>
             
+            {/* Lista de temperamentos que controlan la eliminación del ultimo atributo agregado */}
             {state.temperaments?.map( temperament => {
                 return (<div name= {temperament} onClick={ (e) => deleteTemperament(e)}>{temperament}</div>)
             })}

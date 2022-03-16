@@ -1,40 +1,45 @@
 import { useNavigate } from 'react-router'
-import { Link } from 'react-router-dom'
 import './Dog.css'
+
+//El componente Dog nos permite crear la estructura de un perro con los datos necesarios en la ruta principal ( Home )
 function Dog ( props ){
+
+    //Definimos un Hook para navegar hacia DogDetail
     let nav = useNavigate()
+
+    //Guardamos y separamos cada atributo en una lista para cada uno
     let temperament = props?.temperament?.split(', ')
     let imperialweight = props?.weight?.imperial?.split(' - ')
     let metricweight = props?.weight?.metric?.split( ' - ')
     let imperialheight = props?.height?.imperial?.split(' - ')
     let metricheight = props?.height?.metric?.split( ' - ')
 
-
+    // Definimos la función que nos dirigirá a la pagina de DogDetail
     let HandleRedirectDog = ( ) => {
         if(props.id){
             nav( `../dogs/${props.id}` )
-
         }
     }
 
+
     return (<div>
+
+
         <div className={ props.fav === true ? 'dogbackground-fav'  : 'dogbackground'}>
 
-            {/* Nombre del perro en props.name */}
+            {/* Dog Name */}
             <div className='dogname'>
                 <div className='linkdogname' onClick={() => HandleRedirectDog()}>{ props?.name }</div>
-            
             </div>
 
+            {/* Dog Image */}
             <div className='dog'>
-
                 {/* Redirigimos a los detalles del perro al clickear la imagen */}
                 <img onClick={ ( ) => HandleRedirectDog() } className='imgdog' src={ props?.image?.url } alt=''></img>
-                
             </div>
             
 
-
+            {/* Dog  Details */}
             <div className='dogalldetail'>
 
                 <div className='dogshortdetail'>
@@ -66,7 +71,7 @@ function Dog ( props ){
                     </div>
                     
 
-                    {/* Peso en Sistema Metrico */}
+                        {/* Peso en Sistema Metrico */}
                     <div  id='metricweight'>
                         <div className='kg'>
                             {'Kg'}
@@ -76,11 +81,6 @@ function Dog ( props ){
                                 {weight}
                             </div>)
                         } )}
-
-
-
-
-                
                     </div>
 
                     {/* Iconos del peso */}
@@ -95,18 +95,7 @@ function Dog ( props ){
     
                 </div>
                 
-                {/* Aqui comienza Extended Details y solo se renderiza si su opcion es pasada como 'true' */}
-                {props.extendeddetails === true ?(<div className='dogextendeddetails'>
-                    
-                    {/* <div className=''><div> */}
-                    
-                    {'imperial: '+imperialheight}
-                    {'metric: '+metricheight}
-                    {'lifespan: '+props?.life_span}
-
-                    
-
-                </div>) : null }
+                
 
 
             </div>

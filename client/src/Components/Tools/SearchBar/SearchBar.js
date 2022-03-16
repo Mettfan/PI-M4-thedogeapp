@@ -256,10 +256,11 @@ function SearchBar ( props ){
 
         
             
-        
+        {/* Form Create Dog */}
         <form className="create-form" onSubmit={ ( e ) => handleSearch(e) } >
             <div>
-                
+
+                {/* Filter List */}
                 <select name="filters" id="filters" onChange={(e) => handleInputOnChange(e) }>
                     <option value='Search' disabled={true} className='placeholder'> Filter By... </option>
                     <option value='Name' > Name </option>
@@ -267,18 +268,25 @@ function SearchBar ( props ){
                     <option value='Weight'> Weight </option>
                     <option value='Height'> Height </option>
                 </select>
+
+                {/* Boton que Cambia las unidades de acuerdo a su sistema y atributo (Kg, Lb, In, Cm) */}
                 {state.filter === 'Weight' || state.filter === 'Height' ? <button type="button" name="switch-unity" onClick={ ( e ) => toogleUnity( e ) }>{state.unity}</button>:null  }
                 
+                {/* Text Input para el nombre y el Temoeramento */}
                 <input type={state.filter === 'Name' || state.filter === 'Temperament'?'text':'number'} placeholder={'Dog ' + state.filter  } onChange = {( e ) => handleUserInputOnChange(e)}></input>
             </div>
             <div>
                 
+                {/* Toogle Order Type Button */}
                 <button type="button" className="orderTypebtn" onClick={ () => toogleOrderType() }> { <img className='arrow-img' src={state.orderType === 'a'?'https://icons.iconarchive.com/icons/icons8/ios7/256/Arrows-Up-icon.png':'https://icons.iconarchive.com/icons/icons8/ios7/256/Arrows-Down-icon.png' }></img>}</button>
+
+                {/* Toogle Order By Button */}
                 <button type="button" className="orderBybtn" onClick={ () => toogleOrderBy() }>{state.orderBy === 'w'?<img className="orderby-img" src={'https://icons.iconarchive.com/icons/icons8/ios7/256/Science-Weight-icon.png'}></img>: <div className="orderby-txt">Az</div> }</button>
             
             </div>    
 
-        <button type="submit">Search</button>
+            {/* Search Button */}
+            <button type="submit">Search</button>
         </form>
 
     </div>)

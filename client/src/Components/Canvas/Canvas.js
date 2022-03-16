@@ -1,5 +1,7 @@
 import './Canvas.css'
 import Nav from '../Nav/Nav'
+
+//Canvas es un componente que nos servirá para marcar una zona limite de renderizado 
 function Canvas( props ) {
     return (<div className='homerender'>
 
@@ -8,10 +10,13 @@ function Canvas( props ) {
 
             
         <div className="canvas">
-        <Nav></Nav>
+
+            {/* Agregamos la NavBar */}
+            <Nav></Nav>
 
             <div className="canvas-content">
-            {props?.content}
+                {/* Renderizamos el contenido pasado en props */}
+                {props?.content}
             </div>
         
         </div>

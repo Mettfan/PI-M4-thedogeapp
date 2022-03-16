@@ -4,21 +4,16 @@ import './DogsRenderer.css'
 import { connect } from 'react-redux'
 import { getDogs } from '../../redux/actions'
 import LoadingCheems from '../../Images/LoadingCheems.png'
-// import  CustomButton  from '../Tools/CustomButton/CustomButton'
 
+// DogsRenderer nos permitirá mapear la lista de perros en nuestro almacenamiento global de redux con ayuda de nuestro componente Dog
 function DogsRenderer ( props ) {
 
     
-
+    // Cada vez que se renderice, va a mandar a traer a los perros al back
     useEffect(()=>{
         if( props.get === true ){
-            props.getDogs()
-
-            
+            props.getDogs()  
         }
-        
-        
-        
     },[])
 
     
@@ -27,48 +22,30 @@ function DogsRenderer ( props ) {
     return(<div>
        
 
-        {/*        
         
-                if(  existe   ){
-                    return 'algo'
-                }
-                else{
-
-                    return 'nada'
-
-                }
-
-                existe ? 'algo' : 'nada'
-        
-        
-        
-        */}
         
         <div className='dogs'>
 
             <div className='errornetwork'>
 
+            {/* Si hay un error, lo muestra  */}
             { props.error !== null ? ['NETWORK ERROR :(', <img src='https://images7.memedroid.com/images/UPLOADED919/6193ba1d3c578.jpeg' /> ] : null}
             </div>
-       
-        { 
-        props?.dogs?.length > 0 ? props?.dogs[0]?.map( dog => <Dog 
-            name = { dog.name } 
-            image = { dog.image } 
-            temperament = { dog.temperament }
-            weight = { dog.weight }
-            fav = { props.favourites.includes( dog.name ) }
-            id = { dog.id}
-            
-            
-            ></Dog>).slice(props.page.lim_i, props.page.lim_s) : (  props?.error=== null  ? <img className='loadingcheems' src={LoadingCheems}></img> : null)
-        }
 
-        
-        
+            {/* Mapeo de Dogs en redux */}
+            { 
+            props?.dogs?.length > 0 ? props?.dogs[0]?.map( dog => <Dog 
+                name = { dog.name } 
+                image = { dog.image } 
+                temperament = { dog.temperament }
+                weight = { dog.weight }
+                fav = { props.favourites.includes( dog.name ) }
+                id = { dog.id}
+                
+                        // Slice nos permite mostrar una cantidad de perros en pantalla de acuerdo a un limite superior e inferior
+                ></Dog>).slice(props.page.lim_i, props.page.lim_s) : (  props?.error=== null  ? <img className='loadingcheems' src={LoadingCheems}></img> : null)
+            }
 
-
-        
 
         </div>
 
