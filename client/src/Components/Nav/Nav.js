@@ -7,15 +7,22 @@ import TheDogeAppNav from '../../Images/TheDogeAppNav.png'
 import { useState } from 'react'
 import SearchBar from "../Tools/SearchBar/SearchBar";
 import { useNavigate } from 'react-router'
+import Options from "../Tools/Options/Options";
 
 function Nav(){
     let [ state, setState ] = useState({
-        searchBarisVisible: false
+        searchBarisVisible: false,
+        optionsisVisible: false
     })
     let toogleSearchBar = ( ) => {
         // console.log(state.searchBarisVisible)
         setState({...state, searchBarisVisible: !state.searchBarisVisible})
 
+    }
+    let toogleOptions = ( ) => {
+        console.log('OPTIONS TOOGLED')
+        setState({...state, optionsisVisible: !state.optionsisVisible})
+        console.log(state.optionsisVisible)
     }
     let nav = useNavigate()
 
@@ -40,7 +47,7 @@ function Nav(){
                     <NavLink id="createnewlink" className={'navlink'} to='/create' >Create New</NavLink>
 
 
-                    <img className="ajusteslogo" src={AjustesLogo} alt=' '></img>
+                    <img className="ajusteslogo" src={AjustesLogo} alt=' ' onClick={( ) => toogleOptions( )}></img>
 
                 {/* <NavLink id="exitlink" className={'navlink'} to='/' style={({isActive}) => ({
                     color: isActive?'black':'white',
@@ -54,7 +61,8 @@ function Nav(){
         </div>
 
         {state.searchBarisVisible?<div className="searchbarvisible" ><SearchBar></SearchBar> </div>:null}
-            
+        
+        {state.optionsisVisible? <div className="optionsvisible"> <Options></Options> </div>:null}
     </div>)
 }
 export default Nav

@@ -14,8 +14,8 @@ function Home( props ) {
     //Cada vez que sea iniciado se obtendrá la información de la base de datos 
     useEffect(( )=> {
         props.getDogs()
-        console.log(props.dogs)
-        console.log('DOGSGOT');
+        // console.log(props.dogs)
+        // console.log('DOGSGOT');
     }, [])
 
     let [ state, setState ] = useState({

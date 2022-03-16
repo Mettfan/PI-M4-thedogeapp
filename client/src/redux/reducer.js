@@ -1,5 +1,5 @@
 
-import { GET_DOGS, PAGE_UP, PAGE_DOWN, ERROR, SHOW_FILTERED_DOGS, GET_DOG_DETAIL }  from "./actions"
+import { GET_DOGS, PAGE_UP, PAGE_DOWN, ERROR, SHOW_FILTERED_DOGS, GET_DOG_DETAIL, TOOGLE_SOUND }  from "./actions"
 const initialState = {
     dogs: [ ],
     dogDetail: {},
@@ -10,6 +10,7 @@ const initialState = {
     },
     favourites: [ ],
     displayedDogs: [ ],
+    soundPlay: true,
     
     error: null
 
@@ -48,6 +49,8 @@ function reducer( state = initialState, action ){
 
         case SHOW_FILTERED_DOGS:
             return { ...state, displayedDogs: [action.payload] }
+        case TOOGLE_SOUND:
+            return { ...state, soundPlay: !state.soundPlay}
         default: 
             return { ...state }
         

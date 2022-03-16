@@ -27,7 +27,7 @@ router.get( '/', ( req, res ) => {
         
     }).then( async ( temperamentList ) => {
         let temperaments = await Temperament.findAll()
-        console.log(temperaments)
+        // console.log(temperaments)
         Temperament.bulkCreate(temperamentList).then( ( response ) => {
             res.status(200).send(response)
         }).catch( error => {

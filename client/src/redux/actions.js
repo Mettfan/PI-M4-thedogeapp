@@ -7,7 +7,7 @@ export const PAGE_UP = 'PAGE_UP'
 export const PAGE_DOWN = 'PAGE_DOWN'
 export const ERROR = 'ERROR'
 export const SHOW_FILTERED_DOGS = 'SHOW_FILTERED_DOGS'
-
+export const TOOGLE_SOUND = 'TOOGLE_SOUND'
 export const getDogs = ( ) =>  async dispatch =>{
 
         // console.log('GOTDOGS')
@@ -72,5 +72,12 @@ export const showFilteredDogs = ( dogs ) => {
     return {
         type: SHOW_FILTERED_DOGS,
         payload: dogs
+    }
+}
+
+export const toogleSound = ( soundState ) => {
+    return {
+        type: TOOGLE_SOUND,
+        payload: soundState
     }
 }

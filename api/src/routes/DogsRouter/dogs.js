@@ -23,7 +23,7 @@ router.get( '/' , ( req, res ) => {
         Dog.findAll().then( (databaseDoglist) => {
 
             let fullDoglist = databaseDoglist.concat(apiDoglist)
-            console.log(fullDoglist)
+            // console.log(fullDoglist)
 
 
             if( req.query.name !== undefined ){
@@ -31,7 +31,7 @@ router.get( '/' , ( req, res ) => {
                 fullDoglist = fullDoglist.filter( dog => {
                     return dog.name.includes(req.query.name) 
                 })
-                if (fullDoglist === undefined){
+                if (fullDoglist === undefined || fullDoglist.length === 0){
                    return res.status(200).send({message: 'No se encontró el perro'})
                 }
     
@@ -68,7 +68,7 @@ router.get( '/:id' ,  ( req, res ) => {
             
             let filteredDoglist = doglist.find( dog => dog.id === Number(req.params.id) )
             let result;
-            console.log(filteredDoglist)
+            // console.log(filteredDoglist)
     
             if(filteredDoglist === undefined){
                 result = { message: 'no hay perrito:(' }

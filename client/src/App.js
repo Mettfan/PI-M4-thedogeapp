@@ -9,7 +9,7 @@ import { getDogs, showFilteredDogs } from './redux/actions';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import DogDetail from './Components/DogDetail/DogDetail';
-
+import Woof from '../src/Audio/Woof.mp3'
 
 function App(props) {
   // useEffect(( )=> {
@@ -18,10 +18,20 @@ function App(props) {
   //   console.log('DOGSGOT');
   // }, [])
 
+  let playsound = ( ) => {
 
+    if(props.playSound){
+      document.getElementById('audio').play()
+
+    }
+    else{
+      console.log('sound deactivated')
+    }
+    
+  }
 
   return (
-    <div className="App">
+    <div onClick={ ( ) => playsound()} className="App">
       {/* <h1>Henry Dogs</h1> */}
       {/* <LandingPage btnIsVisible = {true}/> */}
       
@@ -36,7 +46,7 @@ function App(props) {
 
       </Routes>
       
-      
+      <audio id='audio' src={Woof}></audio>
       {/* {console.log(props.dogs[0])} */}
     </div>
   );
@@ -45,7 +55,8 @@ function App(props) {
 const mapStateToProps = ( state ) => {
   return {
     dogs: state.dogs,
-    displayedDogs: state.displayedDogs
+    displayedDogs: state.displayedDogs,
+    playSound: state.soundPlay
   }
 }
 

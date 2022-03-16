@@ -5,6 +5,7 @@ import Canvas from '../Canvas/Canvas'
 import './DogDetail.css'
 import { useEffect } from "react"
 import { getDogDetail } from "../../redux/actions"
+// import  DogsRenderer  from '../DogsRenderer/DogsRenderer.js'
 function DogDetail( props ) {
     let params = useParams()
     useEffect(() =>{
@@ -112,13 +113,14 @@ function DogDetail( props ) {
                     
                     <Canvas content = {<div className="dogdetailcanvas-content">
                             <div>
-                            <DogShowed></DogShowed>
+                                <DogShowed></DogShowed>
                             </div>
+                            
                             
 
                         </div>}></Canvas>
                     
-
+                       
 
                         
                     

@@ -92,7 +92,7 @@
 }
 .lifespandetail{
     position: absolute;
-    top: -20px;
+    top: 0;
     right: 20px;
     background-color: black;
     color: white;
@@ -148,6 +148,14 @@
 .numbercontainer{
     display: flex;
     justify-content: space-around;
+}
+.dogSearch{
+    position: relative;
+    display: flex;
+    flex-direction: row;   
+    
+    
+    
 }
 @keyframes appear {
 

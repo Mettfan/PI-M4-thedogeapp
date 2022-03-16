@@ -128,6 +128,17 @@
     background-color: red;
     width: 200px;
 } */
+/* .optionsvisible{
+  
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    
+    
+    
+    background-color: white;
+    
+} */
 
 @keyframes slidedown {
     0%{
