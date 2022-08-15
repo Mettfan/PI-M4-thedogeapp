@@ -1,3 +1,8 @@
+<p>Este es el proyecto individual que realicé en el Bootcamp de Henry</p>
+<p>Para correr el programa correctamente se debe agregar el archivo .env en la carpeta 'api' con los datos correspondientes: </p>
+<p>DB_USER</p>
+<p>DB_PASSWORD</p>
+<p>No se debe olvidar crear la Database en pgAdmin llamada 'dogs'</p>
 <p align='left'>
     <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
 </p>
